@@ -1563,6 +1563,200 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:D_Schottky_AAK"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D6"
+				(at -0.3811 3.81 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "VS-6CWQ10FNTR-M3"
+				(at 2.1589 3.81 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:TO-252-2"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.chipdip.ru/product/vs-6cwq10fntr-m3-diod-shottki-2-x-3.5a-100v-obschiy-vishay-9000611752"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "https://www.chipdip.ru/product/vs-6cwq10fntr-m3-diod-shottki-2-x-3.5a-100v-obschiy-vishay-9000611752"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "diode Schottky SCHDPAK"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "D_Schottky_AAK_0_1"
+				(polyline
+					(pts
+						(xy -1.905 0.635) (xy -1.905 1.27) (xy -1.27 1.27) (xy -1.27 -1.27) (xy -0.635 -1.27) (xy -0.635 -0.635)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.54 0)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 2.54) (xy 2.54 2.54) (xy 2.54 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "D_Schottky_AAK_1_1"
+				(pin passive line
+					(at 5.08 2.54 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:LED"
 			(pin_numbers
 				(hide yes)
@@ -2565,171 +2759,6 @@
 				)
 			)
 			(symbol "B120-E3_1_1"
-				(pin passive line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Diode:BZT52Bxx"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "D"
-				(at 0 2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "BZT52Bxx"
-				(at 0 -2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "Diode_SMD:D_SOD-123F"
-				(at 0 -4.445 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://diotec.com/tl_files/diotec/files/pdf/datasheets/bzt52b2v4.pdf"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "500mW Zener Diode, SOD-123F"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "zener diode"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "D?SOD?123F*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "BZT52Bxx_0_1"
-				(polyline
-					(pts
-						(xy -1.27 -1.27) (xy -1.27 1.27) (xy -0.762 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 0) (xy -1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "BZT52Bxx_1_1"
 				(pin passive line
 					(at -3.81 0 0)
 					(length 2.54)
@@ -6342,6 +6371,12 @@
 		(uuid "07ae66f7-6b8d-4728-a551-978899fa6708")
 	)
 	(junction
+		(at 170.18 36.83)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0c934f7b-9c05-4bac-beee-2041e7a1b21a")
+	)
+	(junction
 		(at 151.13 64.77)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6376,12 +6411,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2200a2a2-1a47-4a44-a940-39f7f80e2ce1")
-	)
-	(junction
-		(at 123.19 107.95)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "25b89001-6db0-4ddd-9362-f56766f40754")
 	)
 	(junction
 		(at 168.91 44.45)
@@ -6462,12 +6491,6 @@
 		(uuid "64884ee5-73ca-4fbd-a796-93b4a3812e0f")
 	)
 	(junction
-		(at 116.84 116.84)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "76b28c73-8cf6-42be-ae45-04de3337bdd1")
-	)
-	(junction
 		(at 160.02 113.03)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6504,12 +6527,6 @@
 		(uuid "9f4bac2c-ad5e-4c1b-8888-f0c4b8e77a7a")
 	)
 	(junction
-		(at 170.18 36.83)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "9f7e1b80-3b64-407d-b947-74dc721115da")
-	)
-	(junction
 		(at 46.99 34.29)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6528,10 +6545,10 @@
 		(uuid "b6695eda-0891-436d-86a3-56ecd123cae7")
 	)
 	(junction
-		(at 115.57 74.93)
+		(at 124.46 119.38)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "b7bbcba5-693e-4eef-ad73-be27b1f30dab")
+		(uuid "b6dc439b-2079-4ed0-bd7c-ea94d3202787")
 	)
 	(junction
 		(at 53.34 166.37)
@@ -6604,6 +6621,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f52bd623-5c60-4d50-91ce-7858cf64ed66")
+	)
+	(junction
+		(at 124.46 107.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f841493f-3fd9-4959-a16d-b076cd357d6f")
 	)
 	(wire
 		(pts
@@ -6777,6 +6800,16 @@
 	)
 	(wire
 		(pts
+			(xy 124.46 119.38) (xy 127 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1fc44142-fb62-434c-942f-6a0ba5e53234")
+	)
+	(wire
+		(pts
 			(xy 58.42 22.86) (xy 58.42 25.4)
 		)
 		(stroke
@@ -6867,16 +6900,6 @@
 	)
 	(wire
 		(pts
-			(xy 115.57 72.39) (xy 115.57 74.93)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3a6344c4-4fb5-466d-a1a6-2aef0b3343ec")
-	)
-	(wire
-		(pts
 			(xy 74.93 102.87) (xy 74.93 105.41)
 		)
 		(stroke
@@ -6884,6 +6907,16 @@
 			(type default)
 		)
 		(uuid "3c2e1573-6127-45f8-befc-6f181a0f6c88")
+	)
+	(wire
+		(pts
+			(xy 123.19 72.39) (xy 115.57 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3e5287f7-54ee-445f-9747-72516db76fdb")
 	)
 	(wire
 		(pts
@@ -6927,16 +6960,6 @@
 	)
 	(wire
 		(pts
-			(xy 115.57 74.93) (xy 115.57 76.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4a73dec1-6bb3-4e07-b8f5-7a6888496eb9")
-	)
-	(wire
-		(pts
 			(xy 143.51 86.36) (xy 148.59 86.36)
 		)
 		(stroke
@@ -6967,16 +6990,6 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 116.84) (xy 123.19 116.84)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "50057c55-bc46-41cd-8dd1-c7882b702609")
-	)
-	(wire
-		(pts
 			(xy 171.45 82.55) (xy 194.31 82.55)
 		)
 		(stroke
@@ -6984,6 +6997,16 @@
 			(type default)
 		)
 		(uuid "506a9f84-a498-403f-bd9e-7dd80037a4c3")
+	)
+	(wire
+		(pts
+			(xy 124.46 107.95) (xy 124.46 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "516cea9a-9207-4071-9b59-7b63848b91fa")
 	)
 	(wire
 		(pts
@@ -7217,6 +7240,16 @@
 	)
 	(wire
 		(pts
+			(xy 170.18 36.83) (xy 179.07 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7b4e44dc-4065-4999-bc20-dd227efe8909")
+	)
+	(wire
+		(pts
 			(xy 180.34 77.47) (xy 180.34 74.93)
 		)
 		(stroke
@@ -7327,16 +7360,6 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 107.95) (xy 123.19 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "906e4252-9b7f-4d43-b812-71706df2ba9a")
-	)
-	(wire
-		(pts
 			(xy 162.56 44.45) (xy 168.91 44.45)
 		)
 		(stroke
@@ -7434,16 +7457,6 @@
 			(type default)
 		)
 		(uuid "a1584e8c-a3b7-4970-87a9-9c22cda78dae")
-	)
-	(wire
-		(pts
-			(xy 123.19 107.95) (xy 123.19 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a7d23650-24fe-4fe6-bdae-c26addd40db2")
 	)
 	(wire
 		(pts
@@ -7607,13 +7620,13 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 36.83) (xy 179.07 36.83)
+			(xy 124.46 107.95) (xy 127 107.95)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "d0505e37-b5df-44be-ae13-cac14028e57d")
+		(uuid "d1c597fd-a5d9-4719-9358-f27646d930d6")
 	)
 	(wire
 		(pts
@@ -7714,16 +7727,6 @@
 			(type default)
 		)
 		(uuid "ef7c4705-5b1f-40dd-8559-11c6fbc14f95")
-	)
-	(wire
-		(pts
-			(xy 123.19 107.95) (xy 127 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f0dd02c0-298d-4e96-9320-55f6a884440a")
 	)
 	(wire
 		(pts
@@ -8025,16 +8028,6 @@
 		)
 		(uuid "550362b9-3ca4-4f7a-ab31-c3c484f8e80c")
 	)
-	(label "+5V"
-		(at 205.74 59.69 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "593388f9-2375-48cc-9ffa-9ae51aa3a4d3")
-	)
 	(label "SPI1_SCK"
 		(at 26.67 132.08 180)
 		(effects
@@ -8104,6 +8097,16 @@
 			(justify left bottom)
 		)
 		(uuid "92c6769b-433e-4b7d-bea5-069b9cc54555")
+	)
+	(label "+5V"
+		(at 130.81 72.39 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "99af49a4-e315-4d70-98d7-af9f77f9dfc4")
 	)
 	(label "TIM3_CH4"
 		(at 200.66 33.02 180)
@@ -8884,84 +8887,6 @@
 	)
 	(symbol
 		(lib_id "power:GNDD")
-		(at 205.74 62.23 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1dd4a1e7-d64e-43a1-97d2-8de95510e51d")
-		(property "Reference" "#PWR024"
-			(at 205.74 68.58 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GNDD"
-			(at 205.74 66.04 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 205.74 62.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 205.74 62.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GNDD\" , digital ground"
-			(at 205.74 62.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "fed09147-bfe3-4140-8b6b-5c5551d89655")
-		)
-		(instances
-			(project "ServoDronCAN"
-				(path "/fa5567d3-562d-4d0e-ba70-f2e379e2e638"
-					(reference "#PWR024")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GNDD")
 		(at 186.69 114.3 0)
 		(unit 1)
 		(body_style 1)
@@ -9695,7 +9620,7 @@
 	)
 	(symbol
 		(lib_id "MAS_Mechanical:FH-101C")
-		(at 173.99 36.83 0)
+		(at 120.65 107.95 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9706,7 +9631,7 @@
 		(fields_autoplaced yes)
 		(uuid "35f55eb2-7c8d-479a-8d95-ec1af90e0722")
 		(property "Reference" "F1"
-			(at 173.99 30.48 0)
+			(at 120.65 101.6 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9716,7 +9641,7 @@
 			)
 		)
 		(property "Value" "FH-101C"
-			(at 173.99 33.02 0)
+			(at 120.65 104.14 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9726,7 +9651,7 @@
 			)
 		)
 		(property "Footprint" "MAS_Package_nostd:FH-101C"
-			(at 173.99 41.275 0)
+			(at 120.65 112.395 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9738,7 +9663,7 @@
 			)
 		)
 		(property "Datasheet" "https://static.chipdip.ru/lib/273/DOC000273180.pdf"
-			(at 172.72 21.59 0)
+			(at 119.38 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9749,7 +9674,7 @@
 			)
 		)
 		(property "Description" "Fuse holder"
-			(at 173.99 36.83 0)
+			(at 120.65 107.95 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9928,88 +9853,6 @@
 			(project "ServoDronCAN"
 				(path "/fa5567d3-562d-4d0e-ba70-f2e379e2e638"
 					(reference "C11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Diode:BZT52Bxx")
-		(at 123.19 113.03 270)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3ee0a007-43ef-4c51-97cc-f983e9079ffb")
-		(property "Reference" "D5"
-			(at 125.73 111.7599 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "BZT52B36"
-			(at 125.73 114.2999 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-123F"
-			(at 118.745 113.03 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://diotec.com/tl_files/diotec/files/pdf/datasheets/bzt52b2v4.pdf"
-			(at 123.19 113.03 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "500mW Zener Diode, SOD-123F"
-			(at 123.19 113.03 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "f784391f-8405-4c02-a4f1-21d392ee3c48")
-		)
-		(pin "2"
-			(uuid "5420856e-2786-415d-a06c-3871efe79401")
-		)
-		(instances
-			(project "ServoDronCAN"
-				(path "/fa5567d3-562d-4d0e-ba70-f2e379e2e638"
-					(reference "D5")
 					(unit 1)
 				)
 			)
@@ -11144,6 +10987,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GNDD")
+		(at 124.46 119.38 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "75109b21-3b57-49d5-a780-f2e28b3401c0")
+		(property "Reference" "#PWR07"
+			(at 124.46 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GNDD"
+			(at 124.46 123.19 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 124.46 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 124.46 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GNDD\" , digital ground"
+			(at 124.46 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "55c883d1-6d9c-4110-98eb-8d9c8c429136")
+		)
+		(instances
+			(project "ServoDronCAN"
+				(path "/fa5567d3-562d-4d0e-ba70-f2e379e2e638"
+					(reference "#PWR07")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Polarized")
 		(at 168.91 40.64 0)
 		(unit 1)
@@ -12217,6 +12138,85 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 127 72.39 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "91619318-9c4b-450a-9145-379139ab38ae")
+		(property "Reference" "R17"
+			(at 127.254 70.104 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "18"
+			(at 127.254 72.39 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0516_L15.5mm_D5.0mm_P20.32mm_Horizontal"
+			(at 127 74.168 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 127 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "544461be-e59f-4c01-9430-5f3f4ab5adfb")
+		)
+		(pin "2"
+			(uuid "082287ee-c91c-4803-be51-b0f643af8baa")
+		)
+		(instances
+			(project "ServoDronCAN"
+				(path "/fa5567d3-562d-4d0e-ba70-f2e379e2e638"
+					(reference "R17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Diode:B120-E3")
 		(at 147.32 64.77 180)
 		(unit 1)
@@ -12290,86 +12290,6 @@
 			(project "ServoDronCAN"
 				(path "/fa5567d3-562d-4d0e-ba70-f2e379e2e638"
 					(reference "D2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:Conn_01x02_Pin")
-		(at 200.66 59.69 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "95550208-eb4f-4e89-98b6-8931455d3b15")
-		(property "Reference" "J5"
-			(at 201.295 54.61 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Вентилятор"
-			(at 201.295 57.15 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
-			(at 200.66 59.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 200.66 59.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x02, script generated"
-			(at 200.66 59.69 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "2eaec09e-9d71-4a0b-9849-6f01ab608cb1")
-		)
-		(pin "1"
-			(uuid "3b195ea9-d4ea-4714-bf74-118928525484")
-		)
-		(instances
-			(project "ServoDronCAN"
-				(path "/fa5567d3-562d-4d0e-ba70-f2e379e2e638"
-					(reference "J5")
 					(unit 1)
 				)
 			)
@@ -13140,6 +13060,91 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:D_Schottky_AAK")
+		(at 124.46 114.3 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ae499630-008e-46e8-a5b1-a0cc2a6db7b9")
+		(property "Reference" "D6"
+			(at 128.27 113.9189 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "VS-6CWQ10FNTR-M3"
+			(at 128.27 116.4589 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:TO-252-2"
+			(at 124.46 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.chipdip.ru/product/vs-6cwq10fntr-m3-diod-shottki-2-x-3.5a-100v-obschiy-vishay-9000611752"
+			(at 124.46 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "https://www.chipdip.ru/product/vs-6cwq10fntr-m3-diod-shottki-2-x-3.5a-100v-obschiy-vishay-9000611752"
+			(at 124.46 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "5c3e984c-03a1-4ce4-952c-a2d2791cb45d")
+		)
+		(pin "3"
+			(uuid "13765a0b-8aa4-453c-bf9b-fdcda37e72ef")
+		)
+		(pin "1"
+			(uuid "924565d2-7022-455e-8c18-04ba69469763")
+		)
+		(instances
+			(project "ServoDronCAN"
+				(path "/fa5567d3-562d-4d0e-ba70-f2e379e2e638"
+					(reference "D6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 161.29 27.94 90)
 		(unit 1)
@@ -13698,6 +13703,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GNDD")
+		(at 115.57 74.93 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c91c9b4b-f1c9-4bbb-a669-e2e3e818fdbb")
+		(property "Reference" "#PWR022"
+			(at 115.57 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GNDD"
+			(at 115.57 78.74 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 115.57 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 115.57 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GNDD\" , digital ground"
+			(at 115.57 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8fec0f4b-9b30-4bc2-a1d1-e16ef5eec113")
+		)
+		(instances
+			(project "ServoDronCAN"
+				(path "/fa5567d3-562d-4d0e-ba70-f2e379e2e638"
+					(reference "#PWR022")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 49.53 162.56 180)
 		(unit 1)
@@ -13771,84 +13854,6 @@
 			(project "ServoDronCAN"
 				(path "/fa5567d3-562d-4d0e-ba70-f2e379e2e638"
 					(reference "R9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GNDD")
-		(at 115.57 76.2 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d10d0f04-bd42-46c6-9e44-bc8776d089e1")
-		(property "Reference" "#PWR022"
-			(at 115.57 82.55 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GNDD"
-			(at 115.57 80.01 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 115.57 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 115.57 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GNDD\" , digital ground"
-			(at 115.57 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "05252580-6568-4d7d-99e9-0f568c6c0341")
-		)
-		(instances
-			(project "ServoDronCAN"
-				(path "/fa5567d3-562d-4d0e-ba70-f2e379e2e638"
-					(reference "#PWR022")
 					(unit 1)
 				)
 			)
