@@ -1,0 +1,276 @@
+##IAR Ninja build file
+
+
+#Rules
+rule COMPILER_XCL
+  command = C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\XclFileGenerator.exe $xclcommand -f "$rspfile_name"
+  description = IAR_NEW_TOOL+++COMPILER_XCL+++$in+++"C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\XclFileGenerator.exe" $flags
+  rspfile = $rspfile_name
+  rspfile_content = $flags
+
+rule INDEXER
+  command = C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\SourceIndexer.exe $flags
+  depfile = $out.dep
+  description = IAR_NEW_TOOL+++INDEXER+++$out+++"C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\SourceIndexer.exe" $flags
+
+rule MAKEBROWSE
+  command = C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\makeBrowseData.exe $flags
+  description = IAR_NEW_TOOL+++MAKEBROWSE+++$out+++"C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\makeBrowseData.exe" $flags
+
+rule PDBLINK
+  command = C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\PbdLink.exe $flags
+  description = IAR_NEW_TOOL+++PDBLINK+++$out+++"C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\PbdLink.exe" $flags
+
+
+
+#Build steps
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\HAL\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_can.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_can.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_can.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_can.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_can.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\HAL\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_can.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_can.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_cortex.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_cortex.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_cortex.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_cortex.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_cortex.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\HAL\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_cortex.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_cortex.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_crc.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_crc.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_crc.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_crc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_crc.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\HAL\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_crc.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_crc.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_dma.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_dma.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_dma.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_dma.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_dma.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\HAL\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_dma.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_dma.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_flash.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_flash.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\HAL\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash_ex.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_flash_ex.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash_ex.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash_ex.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_flash_ex.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\HAL\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash_ex.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash_ex.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_gpio.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_gpio.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\HAL\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio_ex.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_gpio_ex.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio_ex.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio_ex.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_gpio_ex.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\HAL\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio_ex.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio_ex.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_pwr.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_pwr.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_pwr.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_pwr.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_pwr.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\HAL\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_pwr.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_pwr.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_rcc.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_rcc.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\HAL\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc_ex.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_rcc_ex.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc_ex.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc_ex.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_rcc_ex.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\HAL\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc_ex.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc_ex.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_tim.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_tim.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\HAL\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim_ex.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_tim_ex.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim_ex.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim_ex.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_tim_ex.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\HAL\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim_ex.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim_ex.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_uart.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_uart.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_uart.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_uart.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_uart.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\HAL\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_uart.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_uart.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\ADCx.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\Src\ADCx.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\ADCx.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\ADCx.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\Src\ADCx.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\ADCx.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\ADCx.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\main.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\Src\main.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\main.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\main.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\Src\main.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\main.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\main.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\SPIx.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\Src\SPIx.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\SPIx.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\SPIx.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\Src\SPIx.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\SPIx.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\SPIx.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_hal_msp.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\Src\stm32f1xx_hal_msp.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_hal_msp.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_hal_msp.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\Src\stm32f1xx_hal_msp.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_hal_msp.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_hal_msp.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_it.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\Src\stm32f1xx_it.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_it.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_it.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\Src\stm32f1xx_it.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_it.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_it.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\system_stm32f1xx.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\Src\system_stm32f1xx.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\system_stm32f1xx.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\system_stm32f1xx.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\Src\system_stm32f1xx.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\system_stm32f1xx.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\system_stm32f1xx.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TIMx.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\Src\TIMx.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TIMx.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TIMx.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\Src\TIMx.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TIMx.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TIMx.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TypeСonversion.xcl : COMPILER_XCL 
+  xclcommand = -source_file D$:\CIAM\ServoDronCAN\program_pu\Src\TypeСonversion.c -xcl_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TypeСonversion.xcl -macro_file D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TypeСonversion.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = D$:\CIAM\ServoDronCAN\program_pu\Src\TypeСonversion.c -o D$:\CIAM\ServoDronCAN\program_pu\Debug\Obj\Src --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -I D$:\CIAM\ServoDronCAN\program_pu\CMSIS\ -I D$:\CIAM\ServoDronCAN\program_pu\HAL\Inc\ -I D$:\CIAM\ServoDronCAN\program_pu\Inc\ -On --predef_macros D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TypeСonversion.tmp
+  rspfile_name = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TypeСonversion.xcl.rsp
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_can.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_can.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_can.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_can.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_can.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_cortex.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_cortex.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_cortex.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_cortex.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_cortex.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_crc.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_crc.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_crc.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_crc.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_crc.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_dma.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_dma.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_dma.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_dma.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_dma.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_flash.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash_ex.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash_ex.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_flash_ex.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash_ex.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash_ex.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_gpio.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio_ex.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio_ex.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_gpio_ex.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio_ex.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio_ex.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_pwr.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_pwr.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_pwr.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_pwr.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_pwr.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_rcc.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc_ex.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc_ex.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_rcc_ex.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc_ex.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc_ex.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_tim.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim_ex.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim_ex.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_tim_ex.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim_ex.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim_ex.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_uart.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_uart.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\HAL\Src\stm32f1xx_hal_uart.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_uart.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_uart.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\ADCx.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\ADCx.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\Src\ADCx.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\ADCx.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\ADCx.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\main.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\main.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\Src\main.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\main.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\main.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\SPIx.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\SPIx.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\Src\SPIx.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\SPIx.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\SPIx.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_hal_msp.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_hal_msp.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\Src\stm32f1xx_hal_msp.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_hal_msp.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_hal_msp.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_it.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_it.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\Src\stm32f1xx_it.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_it.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_it.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\system_stm32f1xx.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\system_stm32f1xx.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\Src\system_stm32f1xx.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\system_stm32f1xx.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\system_stm32f1xx.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TIMx.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TIMx.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\Src\TIMx.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TIMx.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TIMx.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TypeСonversion.pbi : INDEXER D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TypeСonversion.xcl |  $
+D$:\CIAM\ServoDronCAN\program_pu\Src\TypeСonversion.c
+  flags = -out=D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TypeСonversion.pbi -f D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TypeСonversion.xcl
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program.pbw : MAKEBROWSE D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program.pbd
+  flags = D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program.pbd -output D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program.pbw
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part0.pbi : PDBLINK D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal.pbi |  $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_can.pbi $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_cortex.pbi $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_crc.pbi $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_dma.pbi
+  flags = -M D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part0.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_can.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_cortex.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_crc.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_dma.pbi
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part1.pbi : PDBLINK D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash.pbi |  $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash_ex.pbi $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio.pbi $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio_ex.pbi $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_pwr.pbi
+  flags = -M D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part1.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_flash_ex.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_gpio_ex.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_pwr.pbi
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part2.pbi : PDBLINK D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc.pbi |  $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc_ex.pbi $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim.pbi $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim_ex.pbi $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_uart.pbi
+  flags = -M D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part2.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_rcc_ex.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_tim_ex.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\HAL\Src\stm32f1xx_hal_uart.pbi
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part3.pbi : PDBLINK D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\ADCx.pbi |  $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\main.pbi $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\SPIx.pbi $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_hal_msp.pbi $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_it.pbi
+  flags = -M D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part3.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\ADCx.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\main.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\SPIx.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_hal_msp.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\stm32f1xx_it.pbi
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part4.pbi : PDBLINK D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\system_stm32f1xx.pbi |  $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TIMx.pbi $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TypeСonversion.pbi
+  flags = -M D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part4.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\system_stm32f1xx.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TIMx.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\Src\TypeСonversion.pbi
+
+build D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program.pbd : PDBLINK D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part0.pbi |  $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part1.pbi $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part2.pbi $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part3.pbi $
+D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part4.pbi
+  flags = -M D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program.pbd D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part0.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part1.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part2.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part3.pbi D$:\CIAM\ServoDronCAN\program_pu\Debug\BrowseInfo\program_part4.pbi
+

@@ -1,0 +1,16 @@
+D:\CIAM\ServoDronCAN\Program\Debug\BrowseInfo\Src\system_stm32f1xx.pbi: \
+  D:\CIAM\ServoDronCAN\Program\Src\system_stm32f1xx.c \
+  D:\CIAM\ServoDronCAN\Program\CMSIS\stm32f1xx.h \
+  D:\CIAM\ServoDronCAN\Program\CMSIS\stm32f103xb.h \
+  D:\CIAM\ServoDronCAN\Program\CMSIS\core_cm3.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\stdint.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\ycheck.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\yvals.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Defaults.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Config_Normal.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\DLib_Product.h \
+  D:\CIAM\ServoDronCAN\Program\CMSIS\cmsis_version.h \
+  D:\CIAM\ServoDronCAN\Program\CMSIS\cmsis_compiler.h \
+  D:\CIAM\ServoDronCAN\Program\CMSIS\cmsis_iccarm.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.0\arm\inc\c\aarch32\iccarm_builtin.h \
+  D:\CIAM\ServoDronCAN\Program\CMSIS\system_stm32f1xx.h
