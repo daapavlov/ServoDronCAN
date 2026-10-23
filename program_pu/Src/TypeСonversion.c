@@ -101,23 +101,7 @@ uint16_t float_to_uint16_t(float x)
     return (uint16_t)(sign | ((uint32_t)new_exp << 10) | mant);
 }
 
-uint16_t LinearTransformation_u16(uint16_t value, uint16_t in_min, uint16_t in_max,
-                   uint16_t out_min, uint16_t out_max)
-{
-    // Защита от деления на ноль
-    if (in_min == in_max) {
-        return out_min;
-    }
 
-    uint16_t in_range = (uint16_t)in_max - in_min;
-    uint16_t out_range = (uint16_t)out_max - out_min;
-
-    // Формула: out = out_min + (value - in_min) * out_range / in_range
-    uint16_t result = (uint16_t)out_min +
-                     (((uint16_t)value - in_min) * out_range) / in_range;
-
-    return (uint16_t)result;
-}
 float LinearTransformation_f(uint16_t value, uint16_t in_min, uint16_t in_max,
                    float out_min, float out_max)
 {
@@ -132,6 +116,23 @@ float LinearTransformation_f(uint16_t value, uint16_t in_min, uint16_t in_max,
     // Формула: out = out_min + (value - in_min) * out_range / in_range
     float result = (float)out_min +
                      (((float)value - in_min) * out_range) / in_range;
+
+    return result;
+}
+uint16_t LinearTransformation_u16(float value, float in_min, float in_max,
+                   uint16_t out_min, uint16_t out_max)
+{
+    // Защита от деления на ноль
+    if (in_min == in_max) {
+        return out_min;
+    }
+
+    uint16_t in_range = (uint16_t)(in_max - in_min);
+    uint16_t out_range = (uint16_t)(out_max - out_min);
+
+    // Формула: out = out_min + (value - in_min) * out_range / in_range
+    uint16_t result = (uint16_t)(out_min +
+                     (((uint16_t)value - in_min) * out_range) / in_range);
 
     return result;
 }

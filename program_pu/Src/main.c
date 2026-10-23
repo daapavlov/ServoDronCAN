@@ -72,7 +72,13 @@ typedef struct SERVO
   uint16_t MovAverageArray[CouADC];
 }SERVO;
 /*------------------------------------------------------------------*/
-
+typedef struct
+{
+  uint16_t Value_fact;
+  uint16_t Value_ust;
+  uint16_t Value_ust_max;
+  uint16_t Value_ust_min;
+}RUD;
 /*------------------------------------------------------------------*/
 typedef struct 
 {
@@ -91,6 +97,8 @@ Actuator ServoPosition;
 TIM_Flag TIM2_Flag;
 TIM_Flag TIM1_Flag;
 TIM_Flag TIM4_Flag;
+RUD servoRUD;
+RUD transmitRUD;
 /*------------------------------------------------------------------*/
 const uint8_t quntityArrayParametrDisplayMAX = 2;
 static uint8_t quntityArrayParametrDisplay=1;
@@ -114,8 +122,9 @@ uint16_t interputPB5_counter=0;
 uint16_t invert = 0;
 char Save[6] = {'S','A','V','E'};
 uint8_t save_usRegistr=0;
-
+uint16_t saveFlash[3];
 uint16_t counterDelayDisplay = 0;
+uint16_t FlagSetMinServo=0;
 /* USER CODE END 0 */
 
 int main(void)
@@ -126,7 +135,19 @@ int main(void)
   TIM2_Flag.TIM_Counter_IT = 1;
   SystemClock_Config();
   
-  Flash_Read(AddressFlash, &invert, 1);
+  Flash_Read(AddressFlash, saveFlash, 3);
+  if(saveFlash[2]==0xFFFF){
+      invert=0;
+      servoRUD.Value_ust_min=0;
+      servoRUD.Value_ust_max=120;
+  }
+  else{
+      //invert=saveFlash[0];
+      invert=saveFlash[0];
+      servoRUD.Value_ust_min= saveFlash[1];
+      servoRUD.Value_ust_max = saveFlash[2];
+  }
+  
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   MX_CAN_Init();
@@ -160,12 +181,12 @@ int main(void)
           
           ServoHand.MovAverageArray[TIM2_Flag.TIM_mSecond_Counter_IT] = ADC_PROCESSING(); //заполняем массив для скользящего среднего
           ServoHand.ValueAngle = moving_average(ServoHand.MovAverageArray, CouADC);//находим скользящее среднее
-          if(invert==0){
-              ServoPosition.position = LinearTransformation_f(ServoHand.ValueAngle, 0, 120, -60.f, 60.f); //преобразуем в -60 - 60
+
+          if(quntityArrayParametrDisplay!=5 && quntityArrayParametrDisplay!=6){
+              if(ServoHand.ValueAngle>servoRUD.Value_ust_max)   ServoHand.ValueAngle=servoRUD.Value_ust_max;
+              if(ServoHand.ValueAngle<servoRUD.Value_ust_min)   ServoHand.ValueAngle=servoRUD.Value_ust_min;
           }
-          else{
-              ServoPosition.position = LinearTransformation_f(ServoHand.ValueAngle, 0, 120, 60.f, -60.f); //преобразуем в -60 - 60
-          }
+          
           
           TIM2_Flag.TIM_mSecond_Counter_IT++;//инкрементируем переменную
           if(TIM2_Flag.TIM_mSecond_Counter_IT>=CouADC)//сбрасываем при переполнении
@@ -178,7 +199,7 @@ int main(void)
           
           if(quntityArrayParametrDisplay==4)
           {
-              
+              //задержка надписи и ее сброс
               if(counterDelayDisplay<400){
                   counterDelayDisplay+=1;
               }
@@ -197,16 +218,19 @@ int main(void)
           
           HAL_StatusTypeDef statusCAN=0;
           float ServoPosition_f;
+          
           if(invert==0){
-              
+
               ServoPosition_f = LinearTransformation_f(ServoHand.ValueAngle, 0, 120, -1.f, 1.f);
+              
           }
           else{
               ServoPosition_f = LinearTransformation_f(ServoHand.ValueAngle, 0, 120, 1.f, -1.f);
+              
           }
           uint16_t ServoPosition_ = float_to_uint16_t(ServoPosition_f);
           TxData[0]=127;
-          TxData[1]=invert;
+          TxData[1]=transmitRUD.Value_ust_min;
           TxData[2]=ServoPosition_;
           TxData[3]=ServoPosition_>>8;
           TxData[4]=0xff;
@@ -298,50 +322,82 @@ uint8_t PressKey_PB5()
 {
     //Функция обработки нажатия на кнопку и гашение ее звона, вызывается по таймеру каждые 5мс
     //Возвращает число, которое инкриментируется при каждом нажатии
-        uint8_t InterputPB5 = (GPIOB->IDR & GPIO_IDR_IDR5) >> 5;
+    uint8_t InterputPB5 = (GPIOB->IDR & GPIO_IDR_IDR5) >> 5;
     if(InterputPB5)
     {
         interputPB5_counter++;
         if(interputPB5_counter>1000)
         {
-            //очень долго нажатие 5сек
-            if(quntityArrayParametrDisplay!=4){
-                quntityArrayParametrDisplay=4;
+
+                quntityArrayParametrDisplay=5;
                 quntityArrayParametrDisplay_mem = quntityArrayParametrDisplay;
-                if(invert == 0){
-                    invert = 1;
-                }
-                else 
-                {
-                    invert = 0;
-                }
-                
-                Flash_Write(AddressFlash, &invert, 1);
-                
-                TxHeader_inv.StdId = 0;
-                TxHeader_inv.ExtId = 0xAA7e;
-                TxHeader_inv.RTR = CAN_RTR_DATA;
-                TxHeader_inv.IDE = CAN_ID_EXT;
-                TxHeader_inv.DLC = 4;
-                TxData[0] = 127;
-                TxData[1] = invert;
-                HAL_CAN_AddTxMessage(&hcan, &TxHeader_inv, TxData, &TxMailbox);//Передаем сообщение в CAN
-                
-            }
+                servoRUD.Value_ust_max=120;
+                servoRUD.Value_ust_min=0;
+                invert = 0;
+            
         }
     }
     else
     {
         if(interputPB5_counter>=20 && interputPB5_counter<200)
         {
-            if(quntityArrayParametrDisplay<quntityArrayParametrDisplayMAX){
-              quntityArrayParametrDisplay+=1;
-              
+            
+            if(quntityArrayParametrDisplay==5 || quntityArrayParametrDisplay==6){
+                
+                if(FlagSetMinServo==0){
+                    
+                    servoRUD.Value_ust_min = ServoHand.ValueAngle;
+                    quntityArrayParametrDisplay = 6;
+                    quntityArrayParametrDisplay_mem = quntityArrayParametrDisplay;
+                    FlagSetMinServo = 1;
+                    if(servoRUD.Value_ust_min>=servoRUD.Value_ust_max-1){
+                        servoRUD.Value_ust_max = 0;
+                    }
+                     
+                }
+                else{
+                    
+                    servoRUD.Value_ust_max = ServoHand.ValueAngle;
+                    FlagSetMinServo=0;
+                    quntityArrayParametrDisplay = 1;
+                    quntityArrayParametrDisplay_mem = quntityArrayParametrDisplay;
+                    transmitRUD.Value_ust_min = servoRUD.Value_ust_min;
+                    if(servoRUD.Value_ust_min>servoRUD.Value_ust_max){
+                        invert = 1;
+                        servoRUD.Value_ust_max = 120 - servoRUD.Value_ust_max;
+                        servoRUD.Value_ust_min = 120 -servoRUD.Value_ust_min;
+                       
+                    }
+                    else{
+                        invert = 0;
+                    }
+                    saveFlash[1]=servoRUD.Value_ust_min;
+                    saveFlash[2]=servoRUD.Value_ust_max;
+                    
+                    saveFlash[0] = invert;
+                    Flash_Write(AddressFlash, saveFlash, 3);
+                    TxHeader_inv.StdId = 0;
+                    TxHeader_inv.ExtId = 0xAA7e;
+                    TxHeader_inv.RTR = CAN_RTR_DATA;
+                    TxHeader_inv.IDE = CAN_ID_EXT;
+                    TxHeader_inv.DLC = 4;
+                    TxData[0] = 127;
+                    TxData[1] = transmitRUD.Value_ust_min;
+                    HAL_CAN_AddTxMessage(&hcan, &TxHeader_inv, TxData, &TxMailbox);//Передаем сообщени
+                    
+                        
+                }
             }
             else{
-              quntityArrayParametrDisplay=1;
+                if(quntityArrayParametrDisplay<quntityArrayParametrDisplayMAX){
+                  quntityArrayParametrDisplay+=1;
+                  
+                }
+                else{
+                  quntityArrayParametrDisplay=1;
+                }
+                quntityArrayParametrDisplay_mem = quntityArrayParametrDisplay;
             }
-            quntityArrayParametrDisplay_mem = quntityArrayParametrDisplay;
         }
         else if(interputPB5_counter>=200 && interputPB5_counter<=1000 && ServoHand.ValueAngle==0){
             //долгое нажатие от 1 до 5 сек
@@ -359,15 +415,24 @@ uint8_t ParametrDisplay(uint8_t NumberParametrDisplay)
     switch (NumberParametrDisplay){
         case 1: {
             uint16_t ValueAngle;
-            ValueAngle = (uint16_t) (LinearTransformation_f(ServoHand.ValueAngle, 0, 120, 0, 100)); //преобразуем в -60 - 60
+            ValueAngle = (uint16_t) (LinearTransformation_f(ServoHand.ValueAngle, servoRUD.Value_ust_min, servoRUD.Value_ust_max, 0, 100)); //преобразуем в -60 - 60
 
             snprintf(LED1.StringSymbol, sizeof(LED1.StringSymbol), "%4d", (uint16_t)ValueAngle);
+            
             TransmitOneDisplay(LED1.StringSymbol, &segment_counter, 0);
             break;
         }
         case 2: {
+            if(invert==0){
+                ServoPosition.position = LinearTransformation_f(ServoHand.ValueAngle, 0, 120, -60.f, 60.f); //преобразуем в -60 - 60
+            }
+            else{
+                ServoPosition.position = LinearTransformation_f(ServoHand.ValueAngle, 0, 120, 60.f, -60.f); //преобразуем в -60 - 60
+            }
             int16_t ServoPosition_ = (int16_t) ServoPosition.position;
-            snprintf(LED1.StringSymbol, sizeof(LED1.StringSymbol), "%4d", (int16_t)ServoPosition_);
+            
+            snprintf(LED1.StringSymbol, sizeof(LED1.StringSymbol), "%3d", (int16_t)ServoPosition_);
+            LED1.StringSymbol[3] = 'o';
             TransmitOneDisplay(LED1.StringSymbol, &segment_counter, 0);
             break;
         }
@@ -384,6 +449,40 @@ uint8_t ParametrDisplay(uint8_t NumberParametrDisplay)
             LED1.StringSymbol[1] = 'N';
             LED1.StringSymbol[2] = 'V';
             LED1.StringSymbol[3] = 'T';
+            TransmitOneDisplay(LED1.StringSymbol, &segment_counter, 0);
+            break;
+        }
+        case 5: {
+            //if(ServoHand.ValueAngle>=60) ServoHand.ValueAngle=60;
+            if(invert==0){
+                
+                ServoPosition.position = LinearTransformation_f(ServoHand.ValueAngle, 0, 120, -60.f, 60.f); //преобразуем в -60 - 60
+
+            }
+            else{
+                ServoPosition.position = LinearTransformation_f(ServoHand.ValueAngle, 0, 120, 60.f, -60.f); //преобразуем в -60 - 60
+
+            }
+            int16_t ServoPosition_ = (int16_t) ServoPosition.position;
+            
+            snprintf(LED1.StringSymbol, sizeof(LED1.StringSymbol), "%4d", (int16_t)ServoPosition_);
+            LED1.StringSymbol[0] = '1';
+            TransmitOneDisplay(LED1.StringSymbol, &segment_counter, 0);
+            break;
+        }
+        case 6: {
+                        
+            //if(ServoHand.ValueAngle<=60) ServoHand.ValueAngle=60;
+            if(invert==0){
+                ServoPosition.position = LinearTransformation_f(ServoHand.ValueAngle, 0, 120, -60.f, 60.f); //преобразуем в -60 - 60
+            }
+            else{
+                ServoPosition.position = LinearTransformation_f(ServoHand.ValueAngle, 0, 120, 60.f, -60.f); //преобразуем в -60 - 60
+            }
+            int16_t ServoPosition_ = (int16_t) ServoPosition.position;
+            
+            snprintf(LED1.StringSymbol, sizeof(LED1.StringSymbol), "%4d", (int16_t)ServoPosition_);
+            LED1.StringSymbol[0] = '2';
             TransmitOneDisplay(LED1.StringSymbol, &segment_counter, 0);
             break;
         }
@@ -471,12 +570,7 @@ uint16_t ADC_PROCESSING()
     else if(adcValue>maxAdc){
         adcValue=maxAdc;
     }
- /*   if(invert==0){
-        rudValue = minRud + (maxRud-minRud) * (maxAdc-adcValue)/(maxAdc-minAdc);       
-    }
-    else if(invert==1){        
-        rudValue = minRud + (maxRud-minRud) * (adcValue-minAdc)/(maxAdc-minAdc);
-    }*/
+
     rudValue = minRud + (maxRud-minRud) * (maxAdc-adcValue)/(maxAdc-minAdc);
     if(rudValue>maxRud){rudValue=maxRud;}
     return rudValue;
@@ -693,6 +787,7 @@ uint8_t DefinitionSymbol(char Symbol)
     case'U': Symb = 0b00111110; break;
     case'V': Symb = 0b00011100; break;
     case'Y': Symb = 0b01101110; break;
+    case'o': Symb = 0b01100011; break;
     case'-': Symb = 0b01000000; break;
     // Если символ окончания строки, выводится число 125
     case'\0': Symb = 0b11111111; break;

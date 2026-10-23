@@ -42,6 +42,8 @@ float uint16_to_float(uint16_t x);
 void output_CH(float x);
 void output_SIGNAL(float x);
 uint16_t float_to_uint16_t(float x);
+float LinearTransformation_f(uint16_t value, uint16_t in_min, uint16_t in_max,
+                   float out_min, float out_max);
 /* Private function prototypes -----------------------------------------------*/
 
 /* USER CODE END PFP */
@@ -71,8 +73,9 @@ Actuator BPU;
 TIM_Flag TIM2_Flag;
 TIM_Flag TIM1_Flag;
 
-float minPosition = -1.f;
-uint16_t position_first=0;
+float minPosition = 0.f;
+float minPositionBuffer = 0.f;
+uint16_t position_first=1;
 /* USER CODE END 0 */
 
 int main(void)
@@ -84,12 +87,12 @@ int main(void)
   MX_USART2_UART_Init();
   
   Flash_Read(AddressFlash,  &position_first, 1);
-  if(position_first==0)
+  if(position_first==0xFFFF)
   {
-      minPosition = 1.f;
+      minPosition = LinearTransformation_f(60, 0, 120, -1, 1);
   }
   else{
-      minPosition = -1.f;
+      minPosition = LinearTransformation_f(position_first, 0, 120, -1, 1);
   }
   
   GPIO_Init();
@@ -132,6 +135,23 @@ int main(void)
          }
   }
 
+}
+float LinearTransformation_f(uint16_t value, uint16_t in_min, uint16_t in_max,
+                   float out_min, float out_max)
+{
+    // Защита от деления на ноль
+    if (in_min == in_max) {
+        return out_min;
+    }
+
+    float in_range = (float)in_max - in_min;
+    float out_range = (float)out_max - out_min;
+
+    // Формула: out = out_min + (value - in_min) * out_range / in_range
+    float result = (float)out_min +
+                     (((float)value - in_min) * out_range) / in_range;
+
+    return result;
 }
 void output_SIGNAL(float x)
 {
@@ -333,13 +353,12 @@ void HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef *hcan)//прерыва�
             if(CAN_RX_Data[0]==127){
                 TIM2->CNT = 0;
                 uint16_t Pos=CAN_RX_Data[1];
-                if(Pos == 0){
-                    minPosition=-1.f;
+                if(Pos!=position_first){
+                    position_first = Pos;
+                    Flash_Write(AddressFlash, &Pos, 1);
                 }
-                else if(Pos == 1)
-                {
-                    minPosition = 1.f;
-                }
+                minPosition = LinearTransformation_f(Pos, 0, 120, -1, 1);
+
                 uint16_t dd=CAN_RX_Data[3]<<8 | CAN_RX_Data[2];
                 BPU.position = uint16_to_float(dd);
                 CanTx_Data_5[0]=1;
@@ -365,15 +384,9 @@ void HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef *hcan)//прерыва�
             if(CAN_RX_Data[0]==127)
             {
                 uint16_t Pos=CAN_RX_Data[1];
-                if(Pos == 0){
-                    minPosition=-1.f;
-                }
-                else if(Pos == 1)
-                {
-                    minPosition = 1.f;
-                }
                 
-                Flash_Write(AddressFlash, &Pos, 1);
+                
+                //Flash_Write(AddressFlash, &Pos, 1);
             }
         }
     }
